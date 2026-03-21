@@ -1,0 +1,17 @@
+****
+**How it Works ?**
+
+- **Boosting :** Boosting Woh algorithm hota Hai jisme App Multiple small base models ko Serial Wise add karke Ouput Nikalte ho. Iss Stagewise Squence Addition Bhi Kehte hai 
+- **Gradient boosting :** Isme bhi hum yehi kaam karenge Agar Overview Doon toh woh kuch aisa hoga ki Har stage pe model purane stage wale Model Ki gltiyan Sahi karenga Aur aise Hum Ek complete Model Milega which Is Just combination of Small base Models jo Apni mistakes sahi kar rhe hai 
+- **How Gradient Boosting Works :** Gradient Boosting for regression mein First Model ka Ouput humesha Dataset ke Ouput Column ka Mean hota hai (Always Remember). Ab Yeh First Model ko aap koi bhi data do Yeh uska Ouput Mean hi dega overall Target Column.
+	- Yeh toh Hogyi Humari First Stage Jisme Humne First Model ka Kam karaliya Ab hum iss Model ki Huyi galtiyon ko agle Model tak pahuchna hai so woh Unhe shai kare 
+	- **How to Find Mistakes :** Kisi Model ki mistake find hum uske Loss function ki help se karte hai Gradient boost Ke Case mein Loss function Hota hai ==actual Value - Predicted Value== isse Psuedo Residual Kehte hai Ab iski Help se Hum first Model Ki Mistakes Nikal lenge 
+	- **Second Model :** humara Dusra Model ek Decision tree Hoga Ab decision tree train hoga Input Columns pe Eg. IQ , Columns Lekin Target Column Hoga Mistake Column Jo Pseudo Residual ki help se nikala tha First Model ki Mistakes. Humara Target hai Yeh hai Is second model ka ki Decision Tree Hume Bata ske Ki Humara Model Kiti Galtiyan Sahi pakad pa rha hai. So Yeh Decision Tree ke yah Model 2 ke Prediction Ka column bana lenge 
+	- **Final Prediction :** Ab maan lete hai Humara gradient boosting sirf 2 Base Models ka hai toh Iska final Prediction calculate karne ka formula : M1 ka prediction - Model 2 ka prediction and that will be Our Final prediction 
+	- **Problem :** Yeh hai ki Isme Overfitting ka case ban rha hai Mtlb yeh Training Data pe hi acche result de rha hai. Isse bachne ke Hum Final Prediction ke formula mein Learning Rate ko Model 2 se Multiply karvadenge jisse Hum chote chote steps aur naye model ko add kare toh **Final Prediction Formula Will Be :** Model1(prediction) - LearningRate * Model2(prediction)
+	- **Third Model :** Ab Hum Third and final Base model banaenge Jo Decison Tree hoga jisme same input columns hoge but Target column will be the Mistake Column of Model 2 + Model 1 Jo Pseudo Residual ki Help Se niklega(Actual value - Predicted Value (**Final Prediction Jo nikala tha Humne Uski Values**)) Phir Hum finally Final Prediction nikalenge Jiska formula Hoga : M1_prediction + learningRate * M2_prediction + LearningRate * M3_prediction
+	- **Note** : Model 1 ka prediction Simple Mean hoga Target column ka. Model 2 ka prediction woh Galtiyan Hogi Jo Model 1 ne kari . Model 3 ka prediction woh Galtiyan Hogi Model 1 + Model 2 Ne milke Kari 
+	- **Note :** Gradient Boosting mein Hum Decison Tree ki Max_depth 8 se 32 ke bich lete hai Yeh proven hai 
+- **Difference Between Adaboost and Gradient Boost :**
+	- In Adaboost You Use Decision Stump (decision Tree with Max_depth = 1)  and In gradient Boost You use Decision Tree with Max_depth in range of 8 to 32
+	- Learning rate concept used in Gradient boost which is same for every Base Model 
