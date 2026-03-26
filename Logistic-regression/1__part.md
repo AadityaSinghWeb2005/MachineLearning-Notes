@@ -23,7 +23,6 @@
 - We have to make these value that way so that line Linearly Separate the data for that we use perceptron trick 
 - **Perceptron Trick :** We take random values A , B C which result in Random Line Now we start a Loop generally For 1000 and try to push the line to the Points which are Not classified correctly and ignore the Points which classified correctly. The process continues until no miss classification remain 
 - **How to label a region :** when You want to know that if a point is lied in Positive Region or Negative Region ? first find coordinates of Point (X,Y) Put it in the General Equation of line if Line Equation Value  > 0 then  Point in  positive region and if Line Equation value< 0 then point in  negative region and if Line Equation value  =0 then point is on Line 
-- 
 
 ---
 
